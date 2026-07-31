@@ -1,17 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
     <header class="header">
-        
+        <div class="header_container">
+            <img src="./img/logo.svg" alt="logo">
+            <div class="header_container--box">
+                <div class="header_container--box--dropdown">
+                    <button class="header_container--box--dropdown--btn" id="dropdownBtn">
+                        Інтерактив <span class="arrow">∨</span>
+                    </button>
+
+                    <div class="header_container--box--dropdown--menu" id="dropdownMenu">
+                        <a href="#">Числовий</a>
+                        <a href="#">Ігровий</a>
+                        <a href="#">Ознайомчий</a>
+                    </div>
+                </div>
+                <div class="header_container--box--nav">
+                    <a href="#">Наша команда</a>
+                    <a href="#">Контакти</a>
+                </div>
+            </div>
+        </div>
+        <div class="header_configuration">
+            <label class="header_configuration--theme--switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="header_configuration--theme--switch--slider">
+                    <span class="icon"></span>
+                </span>
+            </label>
+
+            <h2 id="hello-user" class="header_configuration--hello">Вітаємо, User!</h2>
+
+            <div id="modal_overlay" class="modal_overlay--hidden">
+                <div class="modal_card">
+                    <button class="modal_close" id="modal-close">&times;</button>
+
+                    <img class="modal_icon--sword" src="./img/sword 1.svg" alt="sword">
+                    <img class="modal_icon--puzzle" src="./img/puzzle 1.svg" alt="puzzle">
+                    <img class="modal_icon--tic-tac-toe" src="./img/tic-tac-toe 1.svg" alt="tic-tac-toe">
+                    <img class="modal_icon--game-development" src="./img/game-development 1.svg" alt="game-development">
+
+                    <div id="modal-step-1" class="modal_step">
+                        <h3 class="modal_title">Привіт!</h3>
+                        <p class="modal_text">
+                            Ви потрапили на сайт інтерактивних ігор та завдань.
+                            Надіємось, що вам сподобається і ви отримаєте позитивні емоції!
+                            Бажаємо Вам гарно провести час!
+                        </p>
+
+                        <label class="modal_label" for="user-name-input">Введіть своє ім'я:</label>
+                        <input type="text" id="user-name-input" class="modal_input" placeholder="Ваше ім'я...">
+                        <button id="save-name-btn" class="modal_btn">Зберегти</button>
+                    </div>
+
+                    <div id="modal-step-2" class="modal_step hidden">
+                        <h3 class="modal_success--text">Дякую за підписку!</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
 
 
     <script src="./script.js"></script>
 </body>
+
 </html>
