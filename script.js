@@ -1,20 +1,26 @@
+//dropdown
+
 document.addEventListener('DOMContentLoaded', () => {
-  const themeToggle = document.getElementById('theme-toggle');
+  const dropdownBtn = document.getElementById('dropdownBtn')
+  const dropdownMenu = document.getElementById('dropdownMenu')
+  const dropdownContainer = dropdownBtn.closest('.header_main--container--box--dropdown')
 
-  if (themeToggle) {
-    // 1. Восстанавливаем сохраненную тему при загрузке страницы
-    const isDark = localStorage.getItem('theme') === 'dark';
-    
-    themeToggle.checked = isDark;
-    document.body.classList.toggle('dark-theme', isDark);
+  dropdownBtn.addEventListener('click', (e) => {
 
-    // 2. Переключаем тему по клику через toggle
-    themeToggle.addEventListener('change', () => {
-      // toggle(класс, условие): если true — добавляет класс, если false — удаляет
-      const isDarkActive = document.body.classList.toggle('dark-theme', themeToggle.checked);
-      
-      // Сохраняем результат в localStorage
-      localStorage.setItem('theme', isDarkActive ? 'dark' : 'light');
-    });
-  }
-});
+    e.stopPropagation()
+
+    dropdownMenu.classList.toggle('is-open')
+    dropdownContainer.classList.toggle('is-active')
+  })
+
+
+  document.addEventListener('click', (e) => {
+    if (!dropdownContainer.contains(e.target)) {
+      dropdownMenu.classList.remove('is-open')
+      dropdownContainer.classList.remove('is-active')
+    }
+  })
+})
+
+//modal
+
