@@ -6,6 +6,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    hr {
+        width: 536px;
+    }
 }
 
 $text-color: #000000;
@@ -15,6 +19,14 @@ $text-color: #000000;
     font-weight: 400;
     font-style: normal;
     font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0;
+}
+@mixin font-regular-16 {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
     line-height: 100%;
     letter-spacing: 0;
 }

@@ -1,0 +1,31 @@
+main {
+    background-size: cover;
+    background-color: #EEEEEE;
+    background-image: url('./img/background-main.png');
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .main {
+        width: 100%;
+        max-width: 1090px;
+        margin: 0 auto;
+        background-color: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 36px 0;
+
+        &_title {
+            @include font-regular-12;
+            font-size: 24px;
+            margin-bottom: 36px;
+        }
+
+        &_year {
+            &--title {
+                @include font-regular-16;
+                margin-top: 36px;
+            }
+        }
+    }
+}
