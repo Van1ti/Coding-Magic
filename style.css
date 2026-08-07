@@ -7,6 +7,9 @@
 }
 * hr {
   width: 536px;
+  margin-top: 36px;
+  margin-bottom: 36px;
+  color: #000000;
 }
 
 .header {
@@ -400,14 +403,124 @@ main .main_title {
   line-height: 100%;
   letter-spacing: 0;
   font-size: 24px;
-  margin-bottom: 36px;
+}
+main .main_year {
+  width: 100%;
+  max-width: 576px;
 }
 main .main_year--title {
+  width: 283px;
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
   line-height: 100%;
   letter-spacing: 0;
+  margin: 0 auto;
+}
+main .main_year--container {
   margin-top: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main .main_year--container--search--box {
+  cursor: pointer;
+  width: 215px;
+  height: 35px;
+  background-color: #D7D7D7;
+  border-radius: 20px;
+  box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.2509803922);
+  display: flex;
+  justify-content: space-between;
+}
+main .main_year--container--search--box input {
+  width: 160px;
+  color: #7E7E7E;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0;
+  background: none;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+main .main_year--container--search--box--btn {
+  background-color: #000000;
+  border: none;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+main .main_year--container--result {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+main .main_gamble {
+  width: 100%;
+  max-width: 576px;
+}
+main .main_gamble--title {
+  width: 330px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0;
+  margin: 0 auto;
+}
+main .main_gamble--container {
+  margin-top: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main .main_gamble--container--search--box {
+  cursor: pointer;
+  width: 150px;
+  height: 35px;
+  background-color: #D7D7D7;
+  border-radius: 20px;
+  box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.2509803922);
+  display: flex;
+  justify-content: space-between;
+}
+main .main_gamble--container--search--box input {
+  width: 95px;
+  color: #7E7E7E;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0;
+  background: none;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+main .main_gamble--container--search--box--btn {
+  background-color: #000000;
+  border: none;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+main .main_gamble--container--result {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0;
 }/*# sourceMappingURL=style.css.map */
