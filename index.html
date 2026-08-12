@@ -127,14 +127,35 @@
             <div class="main_gamble">
                 <h3 class="main_gamble--title">Вгадай число, яке загадав комп’ютер</h3>
                 <div class="main_gamble--container">
-                    <div class="main_gamble--container--search--box">
-                        <input id="year-input" type="text" placeholder="Введіть число">
-                        <button class="main_gamble--container--search--box--btn">
+
+                    <form id="gamble-form" class="main_gamble--container--search--box">
+                        <input id="gamble-input" type="text" placeholder="Введіть число">
+                        <button type="submit" id="gamble-btn" class="main_gamble--container--search--box--btn">
                             <img src="./img/search.svg" alt="search">
                         </button>
-                    </div>
-                    <p id="gamble-result" class="main_gamble--container--result">Вітаю, ви вгадали число!  </p>
+                    </form>
+
+                    <p id="gamble-result" class="main_gamble--container--result"></p>
                 </div>
+            </div>
+            <hr>
+            <div class="main_rps">
+                <h1 class="main_rps--title">Камінь - ножиці - папір</h1>
+                <div class="main_rps--container">
+                    <div class="main_rps--container--choise">
+                        <img id="choise-rock"  class="main_rps--container--choise--rock" src="./img/rps-rock.svg" alt="rock">
+                        <img id="choise-scissors" class="main_rps--container--choise--scissors" src="./img/rps-scissors.svg" alt="scissors">
+                        <img id="choise-paper" class="main_rps--container--choise--paper" src="./img/rps-paper.svg" alt="paper">
+                    </div>
+                </div>
+                <div class="main_rps--count">
+                    <h3 class="main_rps--count--title">Рахунок:</h3>
+                    <p id="count-pc" class="main_rps--count--pc"></p>
+                    <p id="count-user" class="main_rps--count--user"></p>
+                </div>
+                <p id="rps-result" class="main_rps--result"></p>
+
+                <button id="choise-pc" class="main_rps--choise-pc">Варіант комп’ютера</button>
             </div>
             <hr>
         </div>

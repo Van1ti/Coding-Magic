@@ -82,7 +82,7 @@ function checkLeapYear() {
   const year = parseInt(yearInput.value.trim(), 10);
 
   if (isNaN(year) || year <= 0) {
-    resultText.textContent = 'Будь ласка, введіть коректний рік!'
+    resultText.textContent = 'Будь ласка, введіть  рік!'
     resultText.style.color = '#990000'
     return
   }
@@ -106,3 +106,96 @@ yearInput.addEventListener('keypress', (event) => {
     checkLeapYear()
   }
 })
+
+
+//gamble
+const form = document.getElementById('gamble-form')
+const userInput = document.getElementById('gamble-input')
+const result = document.getElementById('gamble-result')
+
+form.addEventListener('submit', (event) => {
+
+  event.preventDefault()
+
+  const secretNumber = Math.floor(Math.random() * 10) + 1
+  const userGuess = Number(userInput.value)
+
+  if (!userInput.value.trim()) {
+    result.textContent = 'Будь ласка, введіть число!'
+    result.style.color = 'black'
+    return
+  }
+
+  if (userGuess === secretNumber) {
+    result.textContent = `Вітаю, ви вгадали число ${secretNumber}!`
+    result.style.color = '#039900'
+  } else {
+    result.textContent = `Ви програли, комп’ютер загадав ${secretNumber}`
+    result.style.color = '#990000'
+  }
+})
+
+//rps
+
+let userScore = 0;
+let pcScore = 0;
+
+
+const countUserEl = document.getElementById('count-user')
+const countPcEl = document.getElementById('count-pc')
+const resultEl = document.getElementById('rps-result')
+const pcButtonEl = document.getElementById('choise-pc')
+
+const rockImg = document.getElementById('choise-rock')
+const scissorsImg = document.getElementById('choise-scissors')
+const paperImg = document.getElementById('choise-paper')
+
+const choices = ['rock', 'scissors', 'paper']
+
+
+const choicesUA = {
+    rock: 'Камінь',
+    scissors: 'Ножиці',
+    paper: 'Папір'
+};
+
+countUserEl.textContent = `Ви: ${userScore}`
+countPcEl.textContent = `Комп'ютер: ${pcScore}`
+resultEl.textContent = 'Зробіть свій вибір!'
+
+
+function getPcChoice() {
+    const randomIndex = Math.floor(Math.random() * choices.length)
+    return choices[randomIndex]
+}
+
+
+function playGame(userChoice) {
+    const pcChoice = getPcChoice()
+    
+
+    pcButtonEl.textContent = `Комп'ютер обрав: ${choicesUA[pcChoice]}`
+
+    if (userChoice === pcChoice) {
+        resultEl.textContent = 'Нічия!'
+        resultEl.style.color = '#000000'
+    } else if (
+        (userChoice === 'rock' && pcChoice === 'scissors') ||
+        (userChoice === 'scissors' && pcChoice === 'paper') ||
+        (userChoice === 'paper' && pcChoice === 'rock')
+    ) {
+        userScore++;
+        countUserEl.textContent = `Ви: ${userScore}`
+        resultEl.textContent = 'Ви виграли раунд! '
+        resultEl.style.color = '#039900'
+    } else {
+        pcScore++;
+        countPcEl.textContent = `Комп'ютер: ${pcScore}`
+        resultEl.textContent = 'Комп’ютер виграв раунд! '
+        resultEl.style.color = '#c62828'
+    }
+}
+
+rockImg.addEventListener('click', () => playGame('rock'))
+scissorsImg.addEventListener('click', () => playGame('scissors'))
+paperImg.addEventListener('click', () => playGame('paper'))
