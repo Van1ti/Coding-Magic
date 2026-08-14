@@ -146,6 +146,7 @@
   width: 100%;
   max-width: 94px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .theme-switch {
@@ -633,9 +634,6 @@ main .main_calculator--title {
   line-height: 100%;
   letter-spacing: 0;
 }
-main .main_calculator #calc-result {
-  width: 118px;
-}
 main .main_calculator--container {
   display: flex;
   gap: 38px;
@@ -654,8 +652,16 @@ main .main_calculator--container input {
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
-  width: 135px;
+  width: auto;
+  min-width: 135px;
+  field-sizing: content;
+  box-sizing: border-box;
   cursor: pointer;
+}
+main .main_calculator--container #calc-result {
+  width: auto;
+  min-width: 118px;
+  field-sizing: content;
 }
 main .main_calculator--container--equal {
   cursor: pointer;
@@ -683,6 +689,170 @@ main .main_calculator--container--box button {
   border-radius: 20px;
   background-color: #000000;
 }
-main .main_calculator--container--box button :hover {
-  background-color: #7E7E7E;
+main .main_timeCalculator--title {
+  width: 163px;
+  margin: 0 auto;
+  margin-bottom: 36px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+main .main_timeCalculator--container {
+  width: 100%;
+  max-width: 392px;
+  display: flex;
+  gap: 33px;
+  align-items: center;
+}
+main .main_timeCalculator--container--form {
+  margin: 0;
+  cursor: pointer;
+  width: 150px;
+  height: 35px;
+  background-color: #D7D7D7;
+  border-radius: 20px;
+  box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.2509803922);
+  display: flex;
+  justify-content: space-between;
+}
+main .main_timeCalculator--container--form input {
+  width: 95px;
+  color: #7E7E7E;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0;
+  background: none;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+  outline: none;
+}
+main .main_timeCalculator--container--form--btn {
+  background-color: #000000;
+  border: none;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main .main_timeCalculator--container--dashed-line {
+  width: 100px;
+  border-bottom: 2px dashed #000000;
+  margin: 20px 0;
+}
+main .main_timeCalculator--container--result {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0;
+  margin: 0;
+  white-space: nowrap;
+}
+main .main_dino {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+main .main_dino--title {
+  margin-bottom: 30px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+main .main_dino--game {
+  width: 100%;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+}
+main .main_dino--line {
+  width: 100%;
+  height: 8px;
+  position: absolute;
+  bottom: 0;
+  background-color: #CDB280;
+  border-radius: 20px;
+}
+main .main_dino--character {
+  position: absolute;
+  bottom: 1px;
+  left: 40px;
+}
+main .main_dino--game-over {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+main .main_dino--obstacle {
+  width: 45px;
+  height: 55px;
+  position: absolute;
+  bottom: -5px;
+  right: -30px;
+  background-image: url("./img/cactus-illustration-5-svgrepo-com.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: moveCactus 1.4s infinite linear;
+}
+main .main_dino .jump {
+  animation: dinoJump 0.5s cubic-bezier(0.1, 0.4, 0.3, 1);
+}
+main .main_dino--score {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #535353;
+}
+@keyframes dinoJump {
+  0% {
+    bottom: 8px;
+  }
+  45% {
+    bottom: 95px;
+  }
+  55% {
+    bottom: 95px;
+  }
+  100% {
+    bottom: 8px;
+  }
+}
+@keyframes moveCactus {
+  0% {
+    right: -30px;
+  }
+  100% {
+    right: 600px;
+  }
 }/*# sourceMappingURL=style.css.map */

@@ -204,41 +204,195 @@ paperImg.addEventListener('click', () => playGame('paper'))
 
 //calculator
 
-const inputA = document.getElementById('calc-a')
-const inputB = document.getElementById('calc-b')
-const resultInput = document.getElementById('calc-result')
+document.addEventListener('DOMContentLoaded', () => {
+  const inputA = document.getElementById('calc-a')
+  const inputB = document.getElementById('calc-b')
+  const resultInput = document.getElementById('calc-result')
 
-const btnPlus = document.getElementById('plus')
-const btnMinus = document.getElementById('minus')
-const btnDivide = document.getElementById('divide')
-const btnMultiply = document.getElementById('multiply')
+  const btnPlus = document.getElementById('plus')
+  const btnMinus = document.getElementById('minus')
+  const btnMultiply = document.getElementById('multiply')
+  const btnDivide = document.getElementById('divide')
+  const btnEqual = document.getElementById('equal')
 
-function calculate(operator, label) {
-  const a = parseFloat(inputA.value)
-  const b = parseFloat(inputB.value)
+  let currentOperator = null;
 
-  if (isNaN(a) || isNaN(b)) {
+  function selectOperator(operator, button) {
+    currentOperator = operator;
 
-    return
+    [btnPlus, btnMinus, btnMultiply, btnDivide].forEach(btn => {
+      if (btn) btn.style.backgroundColor = '#000000';
+    });
+
+    if (button) button.style.backgroundColor = '#555555';
   }
 
-  if (operator === '/' && b === 0) {
-    resultInput.value = "Cannot divide by 0!"
-    return
+  if (btnPlus) btnPlus.addEventListener('click', () => selectOperator('+', btnPlus))
+  if (btnMinus) btnMinus.addEventListener('click', () => selectOperator('-', btnMinus))
+  if (btnMultiply) btnMultiply.addEventListener('click', () => selectOperator('*', btnMultiply))
+  if (btnDivide) btnDivide.addEventListener('click', () => selectOperator('/', btnDivide))
+
+  if (btnEqual) {
+    btnEqual.addEventListener('click', () => {
+      const a = parseFloat(inputA.value)
+      const b = parseFloat(inputB.value)
+
+      if (isNaN(a) || isNaN(b)) {
+        resultInput.value = "Введіть числа!"
+        return
+      }
+
+      if (!currentOperator) {
+        resultInput.value = "Оберіть знак!"
+        return
+      }
+
+      let result = 0
+
+      switch (currentOperator) {
+        case '+': result = a + b; break
+        case '-': result = a - b; break
+        case '*': result = a * b; break
+        case '/':
+          if (b === 0) {
+            resultInput.value = "Ділення на 0!"
+            return
+          }
+          result = a / b
+          break
+      }
+
+      resultInput.value = `${result}`
+    })
+  }
+})
+
+
+//timeCalculator
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('timeCalculator-form')
+  const input = document.getElementById('timeCalculator-input')
+  const resultElement = document.querySelector('.main_timeCalculator--container--result')
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault()
+
+    const totalMinutes = parseInt(input.value.trim(), 10)
+
+    if (isNaN(totalMinutes) || totalMinutes < 0) {
+      resultElement.textContent = "Помилка"
+      return
+    }
+
+
+    const days = Math.floor(totalMinutes / (24 * 60))
+    const hours = Math.floor((totalMinutes % (24 * 60)) / 60)
+    const minutes = totalMinutes % 60
+    const seconds = 0
+
+
+    const pad = (num) => String(num).padStart(2, '0')
+    resultElement.textContent = `${days} дн. ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`
+  })
+})
+
+
+//dino
+document.addEventListener('DOMContentLoaded', () => {
+  const dino = document.getElementById('dino')
+  const cactus = document.getElementById('cactus')
+  const scoreElement = document.getElementById('score')
+  const gameOverText = document.getElementById('game-over')
+  const gameContainer = document.querySelector('.main_dino--game')
+
+  let score = 0
+  let isGameStarted = false
+  let isGameOver = false
+  let scoreInterval = null
+  let collisionInterval = null
+
+  cactus.style.animation = 'none'
+
+
+  function resetGame() {
+    isGameOver = false
+    isGameStarted = false
+    score = 0
+
+
+    scoreElement.textContent = '00000'
+
+
+    dino.classList.remove('jump');
+    gameOverText.style.display = 'none'
+
+    cactus.style.left = '';
+    cactus.style.animation = 'none'
   }
 
-  const operations = {
-    '+': a + b,
-    '-': a - b,
-    '*': a * b,
-    '/': a / b
+
+  function startGame() {
+    if (isGameOver) {
+      resetGame()
+    }
+
+    isGameStarted = true
+
+    cactus.style.animation = 'moveCactus 1.4s infinite linear'
+
+
+    scoreInterval = setInterval(() => {
+      score++;
+      scoreElement.textContent = String(score).padStart(5, '0')
+    }, 100)
+
+    collisionInterval = setInterval(checkCollision, 10)
   }
 
-  const calcResult = operations[operator]
-  resultInput.value = `${label} of ${a} and ${b} = ${calcResult}`
-}
+  function jump() {
+    if (!dino.classList.contains('jump') && !isGameOver) {
+      dino.classList.add('jump')
+      setTimeout(() => {
+        dino.classList.remove('jump')
+      }, 500)
+    }
+  }
 
-btnPlus.addEventListener('click', () => calculate('+', 'Sum'))
-btnMinus.addEventListener('click', () => calculate('-', 'Difference'))
-btnMultiply.addEventListener('click', () => calculate('*', 'Multiplication'))
-btnDivide.addEventListener('click', () => calculate('/', 'Division'))
+
+  function handleInput() {
+    if (!isGameStarted || isGameOver) {
+      startGame()
+    } else {
+      jump()
+    }
+  }
+
+  gameContainer.addEventListener('click', handleInput)
+
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'Space' || e.code === 'ArrowUp') {
+      e.preventDefault()
+      handleInput()
+    }
+  })
+
+  function checkCollision() {
+    const dinoBottom = parseInt(window.getComputedStyle(dino).getPropertyValue('bottom'))
+    const cactusLeft = cactus.getBoundingClientRect().left
+    const dinoLeft = dino.getBoundingClientRect().left
+    if (cactusLeft - dinoLeft < 30 && cactusLeft - dinoLeft > -10 && dinoBottom <= 40) {
+      isGameOver = true;
+
+      clearInterval(scoreInterval)
+      clearInterval(collisionInterval)
+
+
+      const currentCactusLeft = cactusLeft - gameContainer.getBoundingClientRect().left
+      cactus.style.animation = 'none'
+      cactus.style.left = `${currentCactusLeft}px`
+
+      gameOverText.style.display = 'block'
+    }
+  }
+})

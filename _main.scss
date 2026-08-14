@@ -222,9 +222,6 @@ main {
                 @include font-regular-16;
             }
 
-            #calc-result {
-                width: 118px;
-            }
 
             &--container {
                 display: flex;
@@ -239,8 +236,19 @@ main {
                     padding: 10px 20px;
                     border: none;
                     border-radius: 20px;
-                    width: 135px;
+
+                    width: auto;
+                    min-width: 135px;
+                    field-sizing: content;
+
+                    box-sizing: border-box;
                     cursor: pointer;
+                }
+
+                #calc-result {
+                    width: auto;
+                    min-width: 118px;
+                    field-sizing: content;
                 }
 
                 &--equal {
@@ -269,12 +277,171 @@ main {
                         border: none;
                         border-radius: 20px;
                         background-color: #000000;
-
-                        :hover{
-                            background-color: #7E7E7E;
-                        }
                     }
                 }
+            }
+        }
+
+        &_timeCalculator {
+            &--title {
+                width: 163px;
+                margin: 0 auto;
+                margin-bottom: 36px;
+                @include font-regular-16;
+            }
+
+            &--container {
+                width: 100%;
+                max-width: 392px;
+                display: flex;
+                gap: 33px;
+                align-items: center;
+
+                &--form {
+                    margin: 0;
+                    cursor: pointer;
+                    width: 150px;
+                    height: 35px;
+                    background-color: #D7D7D7;
+                    border-radius: 20px;
+                    box-shadow: 3px 3px 0px 0px #00000040;
+                    display: flex;
+                    justify-content: space-between;
+
+                    input {
+                        width: 95px;
+                        color: #7E7E7E;
+                        @include font-regular-12;
+                        background: none;
+                        border: none;
+                        margin-left: 10px;
+                        cursor: pointer;
+                        outline: none;
+                    }
+
+                    &--btn {
+                        background-color: #000000;
+                        border: none;
+                        border-top-right-radius: 20px;
+                        border-bottom-right-radius: 20px;
+                        padding: 10px;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+
+                &--dashed-line {
+                    width: 100px;
+                    border-bottom: 2px dashed #000000;
+                    margin: 20px 0;
+                }
+
+                &--result {
+                    @include font-regular-12;
+                    margin: 0;
+                    white-space: nowrap;
+                }
+            }
+        }
+
+        &_dino {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+
+            &--title {
+                margin-bottom: 30px;
+                @include font-regular-16;
+            }
+
+            &--game {
+                width: 100%;
+                height: 150px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            &--line {
+                width: 100%;
+                height: 8px;
+                position: absolute;
+                bottom: 0;
+                background-color: #CDB280;
+                border-radius: 20px;
+            }
+
+            &--character {
+               
+                position: absolute;
+                bottom: 1px;
+                left: 40px;
+               
+            }
+
+            &--game-over {
+                display: none;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                @include font-regular-16;
+            }
+
+            &--obstacle {
+                width: 45px;
+                height: 55px;
+                position: absolute;
+                bottom: -5px;
+                right: -30px;
+                background-image: url('./img/cactus-illustration-5-svgrepo-com.svg');
+                background-size: contain;
+                background-repeat: no-repeat;
+                animation: moveCactus 1.4s infinite linear;
+            }
+
+            .jump {
+                animation: dinoJump 0.5s cubic-bezier(0.1, 0.4, 0.3, 1);
+            }
+
+            &--score {
+                position: absolute;
+                top: 5px;
+                right: 10px;
+                @include font-regular-12;
+                color: #535353;
+            }
+        }
+
+        @keyframes dinoJump {
+            0% {
+                bottom: 8px;
+            }
+
+            45% {
+                bottom: 95px;
+            }
+
+            55% {
+                bottom: 95px;
+            }
+
+            100% {
+                bottom: 8px;
+            }
+        }
+
+        @keyframes moveCactus {
+            0% {
+                right: -30px;
+            }
+
+            100% {
+                right: 600px;
             }
         }
     }
