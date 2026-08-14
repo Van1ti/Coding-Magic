@@ -857,10 +857,12 @@ main .main_dino--score {
   }
 }
 main .main_football--title {
+  width: 74px;
+  margin: 0 auto;
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 100%;
   letter-spacing: 0;
   margin-bottom: 36px;
@@ -873,4 +875,64 @@ main .main_football--container {
   background-color: #5ABB58;
   border: 2px solid black;
   border-radius: 37px;
+  cursor: url("./img/cursor.svg"), auto;
+}
+main .main_football--container img {
+  display: block;
+  min-height: 50px;
+  min-width: 50px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+main .main_three {
+  width: 100%;
+  max-width: 481px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main .main_three--title {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0;
+  margin-bottom: 36px;
+}
+main .main_three--container {
+  width: 100%;
+  max-width: 481px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+}
+main .main_three--container--result {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+main .main_three--container--a, main .main_three--container--b, main .main_three--container--c {
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: #7E7E7E;
+  background-color: #D7D7D7;
+  box-shadow: 3px 3px 0px 0px rgba(0, 0, 0, 0.2509803922);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  width: auto;
+  min-width: 135px;
+  field-sizing: content;
+  box-sizing: border-box;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */

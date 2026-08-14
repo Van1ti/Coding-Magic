@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   const dino = document.getElementById('dino')
   const cactus = document.getElementById('cactus')
-  const line = document.querySelector('.main_dino--line') // Получаем элемент земли
+  const line = document.querySelector('.main_dino--line')
   const scoreElement = document.getElementById('score')
   const gameOverText = document.getElementById('game-over')
   const gameContainer = document.querySelector('.main_dino--game')
@@ -313,9 +313,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let scoreInterval = null
   let collisionInterval = null
 
-  // Изначально останавливаем анимации
+
   cactus.style.animation = 'none'
-  line.style.animation = 'none' // Останавливаем линию
+  line.style.animation = 'none'
 
   function resetGame() {
     isGameOver = false
@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cactus.style.left = '';
     cactus.style.animation = 'none'
-    line.style.animation = 'none' // Сбрасываем анимацию линии
+    line.style.animation = 'none'
   }
 
   function startGame() {
@@ -339,9 +339,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     isGameStarted = true
 
-    // Запускаем обе анимации одновременно
     cactus.style.animation = 'moveCactus 1.4s infinite linear'
-    line.style.animation = 'moveLine 1.4s infinite linear' // Запускаем линию
+    line.style.animation = 'moveLine 1.4s infinite linear'
 
     scoreInterval = setInterval(() => {
       score++;
@@ -390,14 +389,99 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const currentCactusLeft = cactusLeft - gameContainer.getBoundingClientRect().left
 
-      // Останавливаем кактус на месте проигрыша
       cactus.style.animation = 'none'
       cactus.style.left = `${currentCactusLeft}px`
 
-      // Останавливаем движение земли
       line.style.animation = 'none'
 
       gameOverText.style.display = 'block'
     }
   }
+})
+
+
+//football
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.main_football--container')
+  const img = container.querySelector('img')
+  container.style.position = 'relative'
+  container.style.overflow = 'hidden'
+
+  img.style.position = 'absolute'
+  img.style.cursor = 'pointer'
+
+  let currentX = 50
+  let currentY = 50
+  let targetX = 50
+  let targetY = 50
+
+  const speed = 0.1
+
+  container.addEventListener('click', (e) => {
+    const rect = container.getBoundingClientRect()
+    targetX = e.clientX - rect.left
+    targetY = e.clientY - rect.top
+  })
+
+  function animate() {
+    currentX += (targetX - currentX) * speed
+    currentY += (targetY - currentY) * speed
+
+    img.style.left = currentX + 'px'
+    img.style.top = currentY + 'px'
+    img.style.transform = 'translate(-50%, -50%)'
+
+    requestAnimationFrame(animate)
+  }
+
+  animate()
+
+})
+
+
+//three
+document.addEventListener('DOMContentLoaded', () => {
+  const inputA = document.querySelector('.main_three--container--a')
+  const inputB = document.querySelector('.main_three--container--b')
+  const inputC = document.querySelector('.main_three--container--c')
+  const resultP = document.querySelector('.main_three--container--result')
+
+  function calculateLargest() {
+    const valA = inputA.value.trim()
+    const valB = inputB.value.trim()
+    const valC = inputC.value.trim()
+
+    if (valA === "" && valB === "" && valC === "") {
+      resultP.textContent = ""
+      return
+    }
+
+
+    if (valA === "" || valB === "" || valC === "") {
+      resultP.textContent = "Будь ласка, заповніть усі поля!"
+
+      return;
+    }
+
+    const numA = Number(valA)
+    const numB = Number(valB)
+    const numC = Number(valC)
+
+
+    if (isNaN(numA) || isNaN(numB) || isNaN(numC)) {
+      resultP.textContent = "Помилка! Усі введені дані повинні бути числами."
+      return
+    }
+
+    const largest = Math.max(numA, numB, numC)
+
+
+    resultP.style.color = ""; 
+    resultP.textContent = `Найбільше число, яке ви ввели - ${largest}`
+  }
+
+
+  inputA.addEventListener('input', calculateLargest)
+  inputB.addEventListener('input', calculateLargest)
+  inputC.addEventListener('input', calculateLargest)
 })
