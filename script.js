@@ -302,6 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   const dino = document.getElementById('dino')
   const cactus = document.getElementById('cactus')
+  const line = document.querySelector('.main_dino--line') // Получаем элемент земли
   const scoreElement = document.getElementById('score')
   const gameOverText = document.getElementById('game-over')
   const gameContainer = document.querySelector('.main_dino--game')
@@ -312,25 +313,24 @@ document.addEventListener('DOMContentLoaded', () => {
   let scoreInterval = null
   let collisionInterval = null
 
+  // Изначально останавливаем анимации
   cactus.style.animation = 'none'
-
+  line.style.animation = 'none' // Останавливаем линию
 
   function resetGame() {
     isGameOver = false
     isGameStarted = false
     score = 0
 
-
     scoreElement.textContent = '00000'
-
 
     dino.classList.remove('jump');
     gameOverText.style.display = 'none'
 
     cactus.style.left = '';
     cactus.style.animation = 'none'
+    line.style.animation = 'none' // Сбрасываем анимацию линии
   }
-
 
   function startGame() {
     if (isGameOver) {
@@ -339,8 +339,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     isGameStarted = true
 
+    // Запускаем обе анимации одновременно
     cactus.style.animation = 'moveCactus 1.4s infinite linear'
-
+    line.style.animation = 'moveLine 1.4s infinite linear' // Запускаем линию
 
     scoreInterval = setInterval(() => {
       score++;
@@ -358,7 +359,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 500)
     }
   }
-
 
   function handleInput() {
     if (!isGameStarted || isGameOver) {
@@ -381,16 +381,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const dinoBottom = parseInt(window.getComputedStyle(dino).getPropertyValue('bottom'))
     const cactusLeft = cactus.getBoundingClientRect().left
     const dinoLeft = dino.getBoundingClientRect().left
+
     if (cactusLeft - dinoLeft < 30 && cactusLeft - dinoLeft > -10 && dinoBottom <= 40) {
       isGameOver = true;
 
       clearInterval(scoreInterval)
       clearInterval(collisionInterval)
 
-
       const currentCactusLeft = cactusLeft - gameContainer.getBoundingClientRect().left
+
+      // Останавливаем кактус на месте проигрыша
       cactus.style.animation = 'none'
       cactus.style.left = `${currentCactusLeft}px`
+
+      // Останавливаем движение земли
+      line.style.animation = 'none'
 
       gameOverText.style.display = 'block'
     }
