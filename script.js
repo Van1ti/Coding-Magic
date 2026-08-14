@@ -154,9 +154,9 @@ const choices = ['rock', 'scissors', 'paper']
 
 
 const choicesUA = {
-    rock: 'Камінь',
-    scissors: 'Ножиці',
-    paper: 'Папір'
+  rock: 'Камінь',
+  scissors: 'Ножиці',
+  paper: 'Папір'
 };
 
 countUserEl.textContent = `Ви: ${userScore}`
@@ -165,37 +165,80 @@ resultEl.textContent = 'Зробіть свій вибір!'
 
 
 function getPcChoice() {
-    const randomIndex = Math.floor(Math.random() * choices.length)
-    return choices[randomIndex]
+  const randomIndex = Math.floor(Math.random() * choices.length)
+  return choices[randomIndex]
 }
 
 
 function playGame(userChoice) {
-    const pcChoice = getPcChoice()
-    
+  const pcChoice = getPcChoice()
 
-    pcButtonEl.textContent = `Комп'ютер обрав: ${choicesUA[pcChoice]}`
 
-    if (userChoice === pcChoice) {
-        resultEl.textContent = 'Нічия!'
-        resultEl.style.color = '#000000'
-    } else if (
-        (userChoice === 'rock' && pcChoice === 'scissors') ||
-        (userChoice === 'scissors' && pcChoice === 'paper') ||
-        (userChoice === 'paper' && pcChoice === 'rock')
-    ) {
-        userScore++;
-        countUserEl.textContent = `Ви: ${userScore}`
-        resultEl.textContent = 'Ви виграли раунд! '
-        resultEl.style.color = '#039900'
-    } else {
-        pcScore++;
-        countPcEl.textContent = `Комп'ютер: ${pcScore}`
-        resultEl.textContent = 'Комп’ютер виграв раунд! '
-        resultEl.style.color = '#c62828'
-    }
+  pcButtonEl.textContent = `Комп'ютер обрав: ${choicesUA[pcChoice]}`
+
+  if (userChoice === pcChoice) {
+    resultEl.textContent = 'Нічия!'
+    resultEl.style.color = '#000000'
+  } else if (
+    (userChoice === 'rock' && pcChoice === 'scissors') ||
+    (userChoice === 'scissors' && pcChoice === 'paper') ||
+    (userChoice === 'paper' && pcChoice === 'rock')
+  ) {
+    userScore++;
+    countUserEl.textContent = `Ви: ${userScore}`
+    resultEl.textContent = 'Ви виграли раунд! '
+    resultEl.style.color = '#039900'
+  } else {
+    pcScore++;
+    countPcEl.textContent = `Комп'ютер: ${pcScore}`
+    resultEl.textContent = 'Комп’ютер виграв раунд! '
+    resultEl.style.color = '#c62828'
+  }
 }
 
 rockImg.addEventListener('click', () => playGame('rock'))
 scissorsImg.addEventListener('click', () => playGame('scissors'))
 paperImg.addEventListener('click', () => playGame('paper'))
+
+
+
+//calculator
+
+const inputA = document.getElementById('calc-a')
+const inputB = document.getElementById('calc-b')
+const resultInput = document.getElementById('calc-result')
+
+const btnPlus = document.getElementById('plus')
+const btnMinus = document.getElementById('minus')
+const btnDivide = document.getElementById('divide')
+const btnMultiply = document.getElementById('multiply')
+
+function calculate(operator, label) {
+  const a = parseFloat(inputA.value)
+  const b = parseFloat(inputB.value)
+
+  if (isNaN(a) || isNaN(b)) {
+
+    return
+  }
+
+  if (operator === '/' && b === 0) {
+    resultInput.value = "Cannot divide by 0!"
+    return
+  }
+
+  const operations = {
+    '+': a + b,
+    '-': a - b,
+    '*': a * b,
+    '/': a / b
+  }
+
+  const calcResult = operations[operator]
+  resultInput.value = `${label} of ${a} and ${b} = ${calcResult}`
+}
+
+btnPlus.addEventListener('click', () => calculate('+', 'Sum'))
+btnMinus.addEventListener('click', () => calculate('-', 'Difference'))
+btnMultiply.addEventListener('click', () => calculate('*', 'Multiplication'))
+btnDivide.addEventListener('click', () => calculate('/', 'Division'))

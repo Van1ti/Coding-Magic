@@ -633,7 +633,15 @@ main .main_calculator--title {
   line-height: 100%;
   letter-spacing: 0;
 }
-main .main_calculator input {
+main .main_calculator #calc-result {
+  width: 118px;
+}
+main .main_calculator--container {
+  display: flex;
+  gap: 38px;
+  align-items: center;
+}
+main .main_calculator--container input {
   font-family: "Montserrat Alternates", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -648,14 +656,6 @@ main .main_calculator input {
   border-radius: 20px;
   width: 135px;
   cursor: pointer;
-}
-main .main_calculator--result {
-  width: 118px;
-}
-main .main_calculator--container {
-  display: flex;
-  gap: 38px;
-  align-items: center;
 }
 main .main_calculator--container--equal {
   cursor: pointer;
@@ -682,4 +682,7 @@ main .main_calculator--container--box button {
   border: none;
   border-radius: 20px;
   background-color: #000000;
+}
+main .main_calculator--container--box button :hover {
+  background-color: #7E7E7E;
 }/*# sourceMappingURL=style.css.map */
