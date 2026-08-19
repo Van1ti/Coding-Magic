@@ -935,4 +935,104 @@ main .main_three--container--a, main .main_three--container--b, main .main_three
   field-sizing: content;
   box-sizing: border-box;
   cursor: pointer;
+}
+main .main_slider {
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  font-family: sans-serif;
+}
+main .main_slider--title {
+  font-size: 24px;
+  font-weight: 300;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  color: #222;
+}
+main .main_slider .slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main .main_slider .slider-container {
+  width: 100%;
+  overflow: hidden;
+}
+main .main_slider .slider-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+  width: 100%;
+}
+main .main_slider .slide {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+main .main_slider .slide-photo {
+  width: 180px;
+  height: 180px;
+  background-color: #dcdcdc;
+  border-radius: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 20px;
+}
+main .main_slider .slide-name {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: #222;
+}
+main .main_slider .slide-desc {
+  font-size: 14px;
+  color: #555;
+  max-width: 400px;
+  margin: 0 auto;
+  line-height: 1.4;
+}
+main .main_slider .arrow-btn {
+  background: none;
+  border: none;
+  font-size: 36px;
+  cursor: pointer;
+  color: #333;
+  position: absolute;
+  top: 35%;
+  transform: translateY(-50%);
+  padding: 10px;
+  z-index: 10;
+  transition: color 0.3s;
+}
+main .main_slider .arrow-btn:hover {
+  color: #000;
+}
+main .main_slider .arrow-btn#prevBtn {
+  left: -30px;
+}
+main .main_slider .arrow-btn#nextBtn {
+  right: -30px;
+}
+main .main_slider .dots-container {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 25px;
+}
+main .main_slider .dots-container .dot {
+  width: 20px;
+  height: 3px;
+  background-color: #ddd;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+main .main_slider .dots-container .dot.active {
+  width: 35px;
+  background-color: #333;
 }/*# sourceMappingURL=style.css.map */

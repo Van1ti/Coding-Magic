@@ -111,7 +111,7 @@
         <div class="main">
             <h1 class="main_title">Популярні інетрактивні ігри</h1>
             <hr>
-            <div class="main_year">
+            <section class="main_year">
                 <h3 class="main_year--title">Перевір в який рік ти народився</h3>
                 <div class="main_year--container">
                     <div class="main_year--container--search--box">
@@ -122,9 +122,9 @@
                     </div>
                     <p id="year-result" class="main_year--container--result"></p>
                 </div>
-            </div>
+            </section>
             <hr>
-            <div class="main_gamble">
+            <section class="main_gamble">
                 <h3 class="main_gamble--title">Вгадай число, яке загадав комп’ютер</h3>
                 <div class="main_gamble--container">
 
@@ -137,9 +137,9 @@
 
                     <p id="gamble-result" class="main_gamble--container--result"></p>
                 </div>
-            </div>
+            </section>
             <hr>
-            <div class="main_rps">
+            <section class="main_rps">
                 <h1 class="main_rps--title">Камінь - ножиці - папір</h1>
                 <div class="main_rps--container">
                     <div class="main_rps--container--choise">
@@ -159,9 +159,9 @@
                 <p id="rps-result" class="main_rps--result"></p>
 
                 <button id="choise-pc" class="main_rps--choise-pc">Варіант комп’ютера</button>
-            </div>
+            </section>
             <hr>
-            <div class="main_calculator">
+            <section class="main_calculator">
                 <h1 class="main_calculator--title">Калькулятор</h1>
                 <div class="main_calculator--container">
                     <input id="calc-a" class="main_calculator--container--a" type="text" placeholder="Введіть число">
@@ -176,9 +176,9 @@
                     <input id="calc-result" type="text" class="main_calculator--container--result"
                         placeholder="Результат">
                 </div>
-            </div>
+            </section>
             <hr>
-            <div class="main_timeCalculator">
+            <section class="main_timeCalculator">
                 <h1 class="main_timeCalculator--title">Калькулятор часу </h1>
                 <div class="main_timeCalculator--container">
                     <form id="timeCalculator-form" class="main_timeCalculator--container--form">
@@ -190,9 +190,9 @@
                     <div class="main_timeCalculator--container--dashed-line"></div>
                     <p class="main_timeCalculator--container--result">0 дн. 00:00:00</p>
                 </div>
-            </div>
+            </section>
             <hr>
-            <div class="main_dino">
+            <section class="main_dino">
                 <h1 class="main_dino--title">Google динозавр</h1>
                 <div class="main_dino--game">
                     <div id="dino" class="main_dino--character">
@@ -211,16 +211,16 @@
                     <div id="score" class="main_dino--score">00000</div>
                     <div id="game-over" class="main_dino--game-over">GAME OVER</div>
                 </div>
-            </div>
+            </section>
             <hr>
-            <div class="main_football">
+            <section class="main_football">
                 <h1 class="main_football--title">Футбол</h1>
                 <div class="main_football--container">
                     <img src="./img/football-game.svg" alt="football">
                 </div>
-            </div>
+            </section>
             <hr>
-            <div class="main_three">
+            <section class="main_three">
                 <h1 class="main_three--title">Введіть 3 числа</h1>
                 <div class="main_three--container">
                     <input class="main_three--container--a" type="text" placeholder="Введіть число">
@@ -228,7 +228,74 @@
                     <input class="main_three--container--c" type="text" placeholder="Введіть число">
                 </div>
                 <p class="main_three--container--result"></p>
-            </div>
+            </section>
+            <hr>
+            <section class="main_slider">
+                <h1 class="main_slider--title">Наша команда</h1>
+
+                <div class="slider-wrapper">
+                    <button id="prevBtn" class="arrow-btn"><img src="./img/slider-left-arrow.svg" alt="left"></button>
+
+                    <div class="slider-container">
+                        <div class="slider-track" id="sliderTrack">
+                            <div class="slide active">
+                                <img src="./img/kianu-reeves.jpg" alt="Кіану Рівз" class="slide-photo">
+                                <h3 class="slide-name">Кіану Рівз</h3>
+                                <p class="slide-desc">Головна роль у культовій трилогії «Матриця» та бойовику «Джон
+                                    Уик».
+                                </p>
+                            </div>
+
+                            <div class="slide">
+                                <img src="./img/zendeya.jpg" alt="Зендея" class="slide-photo">
+                                <h3 class="slide-name">Зендея</h3>
+                                <p class="slide-desc">Головна роль у драматичному серіалі «Ейфорія» та блокбастері
+                                    «Дюна».
+                                </p>
+                            </div>
+
+                            <div class="slide">
+                                <img src="./img/ilon-mask.jpg" alt="Ілон Маск" class="slide-photo">
+                                <h3 class="slide-name">Ілон Маск</h3>
+                                <p class="slide-desc">Розробка багаторазових ракет SpaceX та електромобілів Tesla.</p>
+                            </div>
+
+                            <div class="slide">
+                                <img src="./img/billie-eilish.jpg" alt="Біллі Айліш" class="slide-photo">
+                                <h3 class="slide-name">Біллі Айліш</h3>
+                                <p class="slide-desc">Створення рекордного поп-альбому та отримання премії «Греммі».</p>
+                            </div>
+
+                            <div class="slide">
+                                <img src="./img/robert-downiejr.png" alt="Роберт Дауні-молодший" class="slide-photo">
+                                <h3 class="slide-name">Роберт Дауні-молодший</h3>
+                                <p class="slide-desc">Створення образу Залізної людини у кіновсесвіті Marvel та «Оскар».
+                                </p>
+                            </div>
+
+                            <div class="slide">
+                                <img src="./img/duen-johnson.avif" alt="Двейн Джонсон" class="slide-photo">
+                                <h3 class="slide-name">Двейн Джонсон</h3>
+                                <p class="slide-desc">Головні ролі у франшизі «Форсаж» та кар'єра в WWE.</p>
+                            </div>
+
+                            <div class="slide">
+                                <img src="./img/ana-de-armas.jpg" alt="Ана де Армас" class="slide-photo">
+                                <h3 class="slide-name">Ана де Армас</h3>
+                                <p class="slide-desc">Головна роль у бойовику «Не час помирати» та номінація на «Оскар»
+                                    за
+                                    фільм «Блондінка».</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <button id="nextBtn" class="arrow-btn"><img src="./img/slider-right-arrow.svg" alt="right"></button>
+                </div>
+
+                <div class="dots-container" id="dotsContainer"></div>
+            </section>
             <hr>
         </div>
     </main>

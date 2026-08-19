@@ -476,7 +476,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const largest = Math.max(numA, numB, numC)
 
 
-    resultP.style.color = ""; 
+    resultP.style.color = "";
     resultP.textContent = `Найбільше число, яке ви ввели - ${largest}`
   }
 
@@ -484,4 +484,51 @@ document.addEventListener('DOMContentLoaded', () => {
   inputA.addEventListener('input', calculateLargest)
   inputB.addEventListener('input', calculateLargest)
   inputC.addEventListener('input', calculateLargest)
+})
+
+//slider
+document.addEventListener('DOMContentLoaded', () => {
+  const track = document.getElementById('sliderTrack')
+  const slides = document.querySelectorAll('.slide')
+  const prevBtn = document.getElementById('prevBtn')
+  const nextBtn = document.getElementById('nextBtn')
+  const dotsContainer = document.getElementById('dotsContainer')
+
+  // Проверка, существуют ли элементы на странице, чтобы не было ошибок
+  if (!track || !slides.length || !prevBtn || !nextBtn || !dotsContainer) {
+    console.error('Ошибка: какие-то элементы слайдера не найдены в DOM!')
+    return
+  }
+
+  let currentIndex = 0
+
+  // Создаем точки-индикаторы
+  slides.forEach((_, index) => {
+    const dot = document.createElement('button')
+    dot.classList.add('dot')
+    if (index === 0) dot.classList.add('active')
+    dot.addEventListener('click', () => showSlide(index));
+    dotsContainer.appendChild(dot)
+  });
+
+  const dots = document.querySelectorAll('.dot')
+
+  function showSlide(index) {
+    if (index >= slides.length) {
+      currentIndex = 0
+    } else if (index < 0) {
+      currentIndex = slides.length - 1
+    } else {
+      currentIndex = index
+    }
+
+    track.style.transform = `translateX(-${currentIndex * 100}%)`
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex)
+    });
+  }
+
+  nextBtn.addEventListener('click', () => showSlide(currentIndex + 1))
+  prevBtn.addEventListener('click', () => showSlide(currentIndex - 1))
 })
