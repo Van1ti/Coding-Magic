@@ -1035,4 +1035,15 @@ main .main_slider .dots-container .dot {
 main .main_slider .dots-container .dot.active {
   width: 35px;
   background-color: #333;
+}
+main .main_sort--title {
+  width: 150px;
+  margin: 0 auto;
+  font-family: "Montserrat Alternates", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0;
+  margin-bottom: 36px;
 }/*# sourceMappingURL=style.css.map */

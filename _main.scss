@@ -637,5 +637,14 @@ main {
                 }
             }
         }
+
+        &_sort {
+            &--title {
+                width: 150px;
+                margin: 0 auto;
+                @include font-regular-16;
+                margin-bottom: 36px;
+            }
+        }
     }
 }
